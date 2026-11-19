@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mohamed-Essadak Rakah, Mechanical Engineering</title>
+  <meta name="description" content="Mechanical engineering student at UMass Amherst and airframe structures engineer on UMass Aeronautics. Drones, aircraft and robots, designed, built, flown and rebuilt.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b1424">
+  <link rel="canonical" href="https://morakah-hub.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohamed-Essadak Rakah, Mechanical Engineering">
+  <meta property="og:description" content="I build things that fly, think, and move. Drones, aircraft and robots from UMass Amherst.">
+  <meta property="og:image" content="https://morakah-hub.github.io/assets/img/og.jpg">
+  <meta property="og:url" content="https://morakah-hub.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&f[]=switzer@400,500,600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#work">Skip to projects</a>
+
+  <header class="nav" id="top">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 18 L16 8 L29 18 L22 18 L16 14 L10 18 Z"/></svg>
+      <span>Mo Rakah</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#log">Build log</a>
+      <a href="#about">About</a>
+      <a class="nav-cta" href="mailto:mrakah@umass.edu">Email me</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="flow" aria-hidden="true"></canvas>
+      <div class="hero-copy">
+        <h1 id="hero-title">I build things that fly, think, and move.</h1>
+        <p class="lede">Second-year mechanical engineering student at UMass Amherst and an airframe structures engineer on the UMass Aeronautics Design/Build/Fly team. I design it in Onshape, print or machine it, wire it, fly it, and rebuild it when it crashes.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">See the projects</a>
+          <a class="btn btn-quiet" href="https://www.linkedin.com/in/mohamed-essadak-rakah" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+        <p class="open">Open to internships and research positions in robotics, AI, and mechanical engineering.</p>
+      </div>
+      <p class="flow-note" aria-hidden="true">Potential flow past a Joukowski airfoil at α = 6°, the angle where my MH60 study found peak L/D.</p>
+    </section>
+
+    <section class="where" aria-label="Where I build">
+      <p>Where I build</p>
+      <ul>
+        <li><strong>UMass Amherst</strong><span>Mechanical Engineering</span></li>
+        <li><strong>UMass Aeronautics</strong><span>AIAA Design/Build/Fly, airframe structures</span></li>
+        <li><strong>OBK Robotics</strong><span>Founded it in high school, Doha</span></li>
+      </ul>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">Projects</h2>
+        <div class="rail-controls">
+          <button type="button" class="rail-btn" data-dir="-1" aria-label="Scroll projects left"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+          <button type="button" class="rail-btn" data-dir="1" aria-label="Scroll projects right"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+        </div>
+      </div>
+
+      <div class="rail" id="rail" tabindex="0" role="region" aria-label="Projects, scrolls sideways">
+        <article class="project">
+          <a class="frame" href="#log" aria-label="Read the AWRAS build log">
+            <img src="assets/img/awras.jpg" width="960" height="600" alt="AWRAS 1.2 flying wing sitting on its wooden launch catapult in a grass field" loading="lazy" decoding="async">
+          </a>
+          <div class="project-top"><h3>AWRAS</h3><span class="tag">Rebuilding as 1.3</span></div>
+          <p class="blurb">My 3D-printed flying-wing UAV. Tailless delta, about 850 mm span, LW-PLA with carbon spars. Designed, built in Qatar, launched off a catapult I built, crashed, and now rebuilt.</p>
+          <p class="stack">Onshape, XFOIL, INAV, LW-PLA, carbon fiber</p>
+          <div class="links"><a href="#log">Build log</a><a href="https://github.com/morakah-hub/AWRAS-1.0" target="_blank" rel="noreferrer">Design repo</a></div>
+        </article>
+
+        <article class="project">
+          <a class="frame" href="https://github.com/morakah-hub/cnc-router-umass-aero" target="_blank" rel="noreferrer" aria-label="Open the CNC router repo">
+            <img src="assets/img/cnc.jpg" width="960" height="600" alt="FoxAlien Masuter Pro CNC router on a workbench with new aluminum corner brackets raising the gantry" loading="lazy" decoding="async">
+          </a>
+          <div class="project-top"><h3>CNC router</h3><span class="tag">Modifying</span></div>
+          <p class="credit">For UMass Aeronautics</p>
+          <p class="blurb">Getting the airframe team off hand-cut carbon fiber. I designed a 400 × 400 mm router from scratch, then bought a used Masuter Pro for half the BOM and documented why. Now raising its gantry with brackets I milled from aluminum.</p>
+          <p class="stack">Onshape, GRBL, plasma cutter, manual mill</p>
+          <div class="links"><a href="https://github.com/morakah-hub/cnc-router-umass-aero" target="_blank" rel="noreferrer">Repo</a></div>
+        </article>
+
+        <article class="project">
+          <a class="frame" href="https://github.com/morakah-hub/Hackachusetts" target="_blank" rel="noreferrer" aria-label="Open the Armstrong Studio repo">
+            <img src="assets/img/armstrong.jpg" width="960" height="600" alt="Armstrong Studio interface showing a simulated robot arm over a round table of colored blocks" loading="lazy" decoding="async">
+          </a>
+          <div class="project-top"><h3>Armstrong Studio</h3><span class="tag">Hackathon</span></div>
+          <p class="credit">Hackachusetts, team project</p>
+          <p class="blurb">A simulated Franka Panda arm that assembles, stacks and sorts parts in your browser, with MuJoCo physics and a simulated RGB-D camera that finds the parts. I built the backend. The follow-up adds STL import and saved workflows.</p>
+          <p class="stack">Python, MuJoCo, FastAPI, React, Three.js</p>
+          <div class="links"><a href="https://github.com/morakah-hub/Hackachusetts" target="_blank" rel="noreferrer">Repo</a><a href="https://github.com/morakah-hub/Hackachusetts_robotics" target="_blank" rel="noreferrer">Follow-up</a></div>
+        </article>
+
+        <article class="project">
+          <a class="frame" href="https://github.com/morakah-hub/Helper-Robot" target="_blank" rel="noreferrer" aria-label="Open the PromptoPal repo">
+            <img src="assets/img/promptopal.jpg" width="960" height="600" alt="PromptoPal's pink 3D-printed chassis on wheels with the battery and wiring beside it" loading="lazy" decoding="async">
+          </a>
+          <div class="project-top"><h3>PromptoPal</h3><span class="tag">Assembling</span></div>
+          <p class="credit">With Abhinav Ram</p>
+          <p class="blurb">An assistive robot that finds a person at scheduled times and prompts them to start daily tasks, built for people with disabilities. I designed the chassis and the power and motor-drive circuits, and did the wiring and fabrication.</p>
+          <p class="stack">Onshape, power electronics, soldering, 3D printing</p>
+          <div class="links"><a href="https://github.com/morakah-hub/Helper-Robot" target="_blank" rel="noreferrer">Repo</a><a href="https://github.com/morakah-hub/Helper-Robot/blob/main/Documentation/PromptoPal_Technical_Report.pdf" target="_blank" rel="noreferrer">Report (PDF)</a></div>
+        </article>
+
+        <article class="project">
+          <a class="frame" href="https://github.com/morakah-hub/line-tracking-robot" target="_blank" rel="noreferrer" aria-label="Open the line tracking robot repo">
+            <img src="assets/img/line-tracker.jpg" width="960" height="600" alt="Red line-tracking robot with green wheels and an ultrasonic sensor" loading="lazy" decoding="async">
+          </a>
+          <div class="project-top"><h3>Line tracking robot</h3><span class="tag">1st place, twice</span></div>
+          <p class="credit">OBK Robotics</p>
+          <p class="blurb">Won the 15th Arab Robotics Competition (out of 50 teams) and the 16th Qatar Schools Robotics Competition. I inherited the robot rather than designing it, then tuned its code, upgraded its motors, kept it running with repairs, and ran team logistics.</p>
+          <p class="stack">Arduino, C++, soldering</p>
+          <div class="links"><a href="https://github.com/morakah-hub/line-tracking-robot" target="_blank" rel="noreferrer">Repo</a></div>
+        </article>
+
+        <article class="project">
+          <a class="frame frame-art" href="https://github.com/morakah-hub/RC-Aircraft-Development" target="_blank" rel="noreferrer" aria-label="Open the RC aircraft repo">
+            <svg viewBox="0 0 480 300" role="img" aria-label="Six aircraft outlines, from a delta canard to a small trainer">
+              <g class="art">
+                <path d="M40 90 l40 -30 l40 30 l-14 0 l-26 -14 l-26 14 Z"/>
+                <path d="M190 90 l40 -34 l40 34 l-40 -10 Z"/>
+                <path d="M340 92 l50 -32 l50 32 l-20 0 l-30 -16 l-30 16 Z"/>
+                <path d="M40 210 h80 M80 180 v70 M64 250 h32 M64 186 h32"/>
+                <path d="M190 210 h80 M230 178 v72 M210 248 h40 M230 178 l-6 8 h12 Z"/>
+                <path d="M350 214 h80 M390 188 v56 M374 240 h32"/>
+              </g>
+              <g class="art-done"><circle cx="390" cy="214" r="34"/></g>
+            </svg>
+          </a>
+          <div class="project-top"><h3>RC aircraft</h3><span class="tag">6 airframes</span></div>
+          <p class="blurb">Six foamboard planes I built before AWRAS, with no kits. Five crashed or never flew, and each failure became a rule for the next one, like checking thrust-to-weight first. Plane six took off, flew, and landed.</p>
+          <p class="stack">Foamboard, CAD-printed parts, flight testing</p>
+          <div class="links"><a href="https://github.com/morakah-hub/RC-Aircraft-Development" target="_blank" rel="noreferrer">Repo</a></div>
+        </article>
+
+        <article class="project">
+          <a class="frame frame-art" href="https://github.com/morakah-hub/Drone-Projects" target="_blank" rel="noreferrer" aria-label="Open the drone projects repo">
+            <svg viewBox="0 0 480 300" role="img" aria-label="Top-down outline of an X-frame quadcopter">
+              <g class="art">
+                <path d="M170 80 L310 220 M310 80 L170 220"/>
+                <rect x="215" y="125" width="50" height="50" rx="8"/>
+                <circle cx="170" cy="80" r="44"/><circle cx="310" cy="80" r="44"/>
+                <circle cx="170" cy="220" r="44"/><circle cx="310" cy="220" r="44"/>
+              </g>
+              <g class="art-done"><circle cx="240" cy="150" r="6"/></g>
+            </svg>
+          </a>
+          <div class="project-top"><h3>Drones</h3><span class="tag">3 quads</span></div>
+          <p class="blurb">A 5″ competition quad, a 7″ freestyle quad whose motors went into my flying wing after it crashed, and a high-speed build. This is where I learned to solder, set up Betaflight, and fly FPV.</p>
+          <p class="stack">Betaflight, FPV, soldering</p>
+          <div class="links"><a href="https://github.com/morakah-hub/Drone-Projects" target="_blank" rel="noreferrer">Repo</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="log" id="log" aria-labelledby="log-title">
+      <div class="section-head">
+        <h2 id="log-title">AWRAS, one version at a time</h2>
+      </div>
+      <p class="section-lede">Every version fixed what the last one taught me. The design and analysis from 1.0 still carry the whole series.</p>
+
+      <dl class="specs">
+        <div><dt>Wingspan</dt><dd>850 mm</dd></div>
+        <div><dt>Airfoil</dt><dd>MH60</dd></div>
+        <div><dt>Peak L/D at Re 300k</dt><dd>70.8</dd></div>
+        <div><dt>All-up weight, 1.2</dt><dd>1,284 g</dd></div>
+      </dl>
+
+      <ol class="timeline">
+        <li>
+          <img src="assets/img/awras-1-0.jpg" width="960" height="640" alt="Isometric CAD render of the AWRAS flying wing with twin vertical fins and rear motors" loading="lazy" decoding="async">
+          <div class="step-head"><span class="ver">1.0</span><span class="state">Designed</span></div>
+          <p>Full design and analysis: an XFOIL study of the MH60 at Re 200k to 400k, MAC and CG work, and performance estimates. The fuselage turned out too small for the electronics.</p>
+          <a href="https://github.com/morakah-hub/AWRAS-1.0" target="_blank" rel="noreferrer">AWRAS 1.0</a>
+        </li>
+        <li>
+          <img src="assets/img/awras-1-1.jpg" width="960" height="640" alt="Finished AWRAS 1.1 airframe with a yellow battery bay" loading="lazy" decoding="async">
+          <div class="step-head"><span class="ver">1.1</span><span class="state">Built in Qatar</span></div>
+          <p>Printed, wired and ready. I lost weeks to LW-PLA clogging on an Ender 3 until switching filament. It never flew, because I couldn't get flight clearance before leaving.</p>
+          <a href="https://github.com/morakah-hub/AWRAS-1.1" target="_blank" rel="noreferrer">AWRAS 1.1</a>
+        </li>
+        <li>
+          <img src="assets/img/awras-1-2.jpg" width="960" height="640" alt="AWRAS 1.2 held up for a center of gravity check" loading="lazy" decoding="async">
+          <div class="step-head"><span class="ver">1.2</span><span class="state">Flew, then crashed</span></div>
+          <p>Two hand launches couldn't reach flying speed, so I built a catapult. The third attempt flew about 10 to 15 m before a control issue brought it down.</p>
+          <a href="https://github.com/morakah-hub/AWRAS-1.2" target="_blank" rel="noreferrer">AWRAS 1.2</a>
+        </li>
+        <li>
+          <img src="assets/img/awras-1-3.jpg" width="960" height="640" alt="Printed AWRAS wing and fuselage parts laid out on a workbench" loading="lazy" decoding="async">
+          <div class="step-head"><span class="ver">1.3</span><span class="state is-now">In progress</span></div>
+          <p>Reprinted with changes. Before it flies, I'm tracking down the control issue that ended 1.2.</p>
+          <a href="https://github.com/morakah-hub/AWRAS-1.3" target="_blank" rel="noreferrer">AWRAS 1.3</a>
+        </li>
+      </ol>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <figure class="about-photo">
+        <img src="assets/img/preflight.jpg" width="800" height="960" alt="Mohamed-Essadak Rakah doing a preflight check on AWRAS 1.2 at a picnic table in the field" loading="lazy" decoding="async">
+        <figcaption>Preflight on AWRAS 1.2, before the catapult flight.</figcaption>
+      </figure>
+      <div class="about-copy">
+        <h2 id="about-title">About</h2>
+        <p>I learn how a system works, then build my own version. That usually means CAD in Onshape, then whatever process gets the part made, whether that's FDM printing, carbon fiber layup, the CNC router or the manual mill, and then the wiring and flight-controller setup that makes it run.</p>
+        <p>I grew up across several countries and finished high school in Doha, where I founded OBK Robotics. Now I'm at UMass Amherst, building airframe structures for our Design/Build/Fly aircraft.</p>
+
+        <h3>What I'm working on now</h3>
+        <ul class="now">
+          <li>Rebuilding as AWRAS 1.3 and finding the control issue that crashed 1.2.</li>
+          <li>Getting the team's CNC router ready for its first carbon fiber cuts, now that the new riser plates are installed.</li>
+          <li>Assembling and testing PromptoPal, now that the parts are printed and the electronics are soldered.</li>
+        </ul>
+
+        <h3>Tools I use</h3>
+        <dl class="skills">
+          <div><dt>Design and making</dt><dd>Onshape, FDM printing, carbon fiber layup, rapid prototyping</dd></div>
+          <div><dt>Shop</dt><dd>3-axis CNC router, manual mill, drill press, plasma cutter, bandsaw, laser cutter</dd></div>
+          <div><dt>Electronics</dt><dd>Arduino, power distribution, soldering and wiring, sensor integration</dd></div>
+          <div><dt>Aerospace</dt><dd>Aircraft design, XFOIL, flight testing, INAV, RC electronics</dd></div>
+          <div><dt>Software</dt><dd>Git and GitHub, MATLAB (coursework)</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Have something that needs to fly, think, or move?</h2>
+      <p>I'm looking for internships and research positions. Email reaches me fastest.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:mrakah@umass.edu">mrakah@umass.edu</a>
+        <a class="btn btn-quiet" href="https://www.linkedin.com/in/mohamed-essadak-rakah" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn btn-quiet" href="https://github.com/morakah-hub" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Mohamed-Essadak Rakah, 2026</p>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
