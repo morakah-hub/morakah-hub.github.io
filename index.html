@@ -19,6 +19,7 @@
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&f[]=switzer@400,500,600&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
   <a class="skip" href="#work">Skip to projects</a>
@@ -32,28 +33,28 @@
       <a href="#work">Work</a>
       <a href="#log">Build log</a>
       <a href="#about">About</a>
-      <a class="nav-cta" href="mailto:mrakah@umass.edu">Email me</a>
+      <a class="nav-cta" href="mailto:mohamedessadakrakah@gmail.com">Email me</a>
     </nav>
+    <span class="progress" aria-hidden="true"></span>
   </header>
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <canvas id="flow" aria-hidden="true"></canvas>
+      <canvas id="scene" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <h1 id="hero-title">I build things that fly, think, and move.</h1>
-        <p class="lede">Second-year mechanical engineering student at UMass Amherst and an airframe structures engineer on the UMass Aeronautics Design/Build/Fly team. I design it in Onshape, print or machine it, wire it, fly it, and rebuild it when it crashes.</p>
+        <p class="lede">Second-year mechanical engineering student at UMass Amherst, most interested in robotics and AI. I also build airframe structures for the UMass Aeronautics Design/Build/Fly team.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#work">See the projects</a>
           <a class="btn btn-quiet" href="https://www.linkedin.com/in/mohamed-essadak-rakah" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
         <p class="open">Open to internships and research positions in robotics, AI, and mechanical engineering.</p>
       </div>
-      <p class="flow-note" aria-hidden="true">Potential flow past a Joukowski airfoil at α = 6°, the angle where my MH60 study found peak L/D.</p>
     </section>
 
     <section class="where" aria-label="Where I build">
       <p>Where I build</p>
-      <ul>
+      <ul data-reveal-group>
         <li><strong>UMass Amherst</strong><span>Mechanical Engineering</span></li>
         <li><strong>UMass Aeronautics</strong><span>AIAA Design/Build/Fly, airframe structures</span></li>
         <li><strong>OBK Robotics</strong><span>Founded it in high school, Doha</span></li>
@@ -61,7 +62,7 @@
     </section>
 
     <section class="work" id="work" aria-labelledby="work-title">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2 id="work-title">Projects</h2>
         <div class="rail-controls">
           <button type="button" class="rail-btn" data-dir="-1" aria-label="Scroll projects left"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
@@ -70,7 +71,7 @@
       </div>
 
       <div class="rail" id="rail" tabindex="0" role="region" aria-label="Projects, scrolls sideways">
-        <article class="project">
+        <article class="project" data-reveal>
           <a class="frame" href="#log" aria-label="Read the AWRAS build log">
             <img src="assets/img/awras.jpg" width="960" height="600" alt="AWRAS 1.2 flying wing sitting on its wooden launch catapult in a grass field" loading="lazy" decoding="async">
           </a>
@@ -80,7 +81,7 @@
           <div class="links"><a href="#log">Build log</a><a href="https://github.com/morakah-hub/AWRAS-1.0" target="_blank" rel="noreferrer">Design repo</a></div>
         </article>
 
-        <article class="project">
+        <article class="project" data-reveal>
           <a class="frame" href="https://github.com/morakah-hub/cnc-router-umass-aero" target="_blank" rel="noreferrer" aria-label="Open the CNC router repo">
             <img src="assets/img/cnc.jpg" width="960" height="600" alt="FoxAlien Masuter Pro CNC router on a workbench with new aluminum corner brackets raising the gantry" loading="lazy" decoding="async">
           </a>
@@ -91,7 +92,7 @@
           <div class="links"><a href="https://github.com/morakah-hub/cnc-router-umass-aero" target="_blank" rel="noreferrer">Repo</a></div>
         </article>
 
-        <article class="project">
+        <article class="project" data-reveal>
           <a class="frame" href="https://github.com/morakah-hub/Hackachusetts" target="_blank" rel="noreferrer" aria-label="Open the Armstrong Studio repo">
             <img src="assets/img/armstrong.jpg" width="960" height="600" alt="Armstrong Studio interface showing a simulated robot arm over a round table of colored blocks" loading="lazy" decoding="async">
           </a>
@@ -102,7 +103,7 @@
           <div class="links"><a href="https://github.com/morakah-hub/Hackachusetts" target="_blank" rel="noreferrer">Repo</a><a href="https://github.com/morakah-hub/Hackachusetts_robotics" target="_blank" rel="noreferrer">Follow-up</a></div>
         </article>
 
-        <article class="project">
+        <article class="project" data-reveal>
           <a class="frame" href="https://github.com/morakah-hub/Helper-Robot" target="_blank" rel="noreferrer" aria-label="Open the PromptoPal repo">
             <img src="assets/img/promptopal.jpg" width="960" height="600" alt="PromptoPal's pink 3D-printed chassis on wheels with the battery and wiring beside it" loading="lazy" decoding="async">
           </a>
@@ -113,7 +114,7 @@
           <div class="links"><a href="https://github.com/morakah-hub/Helper-Robot" target="_blank" rel="noreferrer">Repo</a><a href="https://github.com/morakah-hub/Helper-Robot/blob/main/Documentation/PromptoPal_Technical_Report.pdf" target="_blank" rel="noreferrer">Report (PDF)</a></div>
         </article>
 
-        <article class="project">
+        <article class="project" data-reveal>
           <a class="frame" href="https://github.com/morakah-hub/line-tracking-robot" target="_blank" rel="noreferrer" aria-label="Open the line tracking robot repo">
             <img src="assets/img/line-tracker.jpg" width="960" height="600" alt="Red line-tracking robot with green wheels and an ultrasonic sensor" loading="lazy" decoding="async">
           </a>
@@ -124,19 +125,9 @@
           <div class="links"><a href="https://github.com/morakah-hub/line-tracking-robot" target="_blank" rel="noreferrer">Repo</a></div>
         </article>
 
-        <article class="project">
-          <a class="frame frame-art" href="https://github.com/morakah-hub/RC-Aircraft-Development" target="_blank" rel="noreferrer" aria-label="Open the RC aircraft repo">
-            <svg viewBox="0 0 480 300" role="img" aria-label="Six aircraft outlines, from a delta canard to a small trainer">
-              <g class="art">
-                <path d="M40 90 l40 -30 l40 30 l-14 0 l-26 -14 l-26 14 Z"/>
-                <path d="M190 90 l40 -34 l40 34 l-40 -10 Z"/>
-                <path d="M340 92 l50 -32 l50 32 l-20 0 l-30 -16 l-30 16 Z"/>
-                <path d="M40 210 h80 M80 180 v70 M64 250 h32 M64 186 h32"/>
-                <path d="M190 210 h80 M230 178 v72 M210 248 h40 M230 178 l-6 8 h12 Z"/>
-                <path d="M350 214 h80 M390 188 v56 M374 240 h32"/>
-              </g>
-              <g class="art-done"><circle cx="390" cy="214" r="34"/></g>
-            </svg>
+        <article class="project" data-reveal>
+          <a class="frame" href="https://github.com/morakah-hub/RC-Aircraft-Development" target="_blank" rel="noreferrer" aria-label="Open the RC aircraft repo">
+            <img src="assets/img/rc-aircraft.jpg" width="960" height="600" alt="White foamboard RC plane with gray tape on a runway, with the pilot holding the transmitter beside it" loading="lazy" decoding="async">
           </a>
           <div class="project-top"><h3>RC aircraft</h3><span class="tag">6 airframes</span></div>
           <p class="blurb">Six foamboard planes I built before AWRAS, with no kits. Five crashed or never flew, and each failure became a rule for the next one, like checking thrust-to-weight first. Plane six took off, flew, and landed.</p>
@@ -144,7 +135,7 @@
           <div class="links"><a href="https://github.com/morakah-hub/RC-Aircraft-Development" target="_blank" rel="noreferrer">Repo</a></div>
         </article>
 
-        <article class="project">
+        <article class="project" data-reveal>
           <a class="frame frame-art" href="https://github.com/morakah-hub/Drone-Projects" target="_blank" rel="noreferrer" aria-label="Open the drone projects repo">
             <svg viewBox="0 0 480 300" role="img" aria-label="Top-down outline of an X-frame quadcopter">
               <g class="art">
@@ -165,19 +156,18 @@
     </section>
 
     <section class="log" id="log" aria-labelledby="log-title">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2 id="log-title">AWRAS, one version at a time</h2>
       </div>
-      <p class="section-lede">Every version fixed what the last one taught me. The design and analysis from 1.0 still carry the whole series.</p>
+      <p class="section-lede" data-reveal>Every version fixed what the last one taught me. The design and analysis from 1.0 still carry the whole series.</p>
 
-      <dl class="specs">
+      <dl class="specs" data-reveal>
         <div><dt>Wingspan</dt><dd>850 mm</dd></div>
         <div><dt>Airfoil</dt><dd>MH60</dd></div>
-        <div><dt>Peak L/D at Re 300k</dt><dd>70.8</dd></div>
         <div><dt>All-up weight, 1.2</dt><dd>1,284 g</dd></div>
       </dl>
 
-      <ol class="timeline">
+      <ol class="timeline" data-reveal-group>
         <li>
           <img src="assets/img/awras-1-0.jpg" width="960" height="640" alt="Isometric CAD render of the AWRAS flying wing with twin vertical fins and rear motors" loading="lazy" decoding="async">
           <div class="step-head"><span class="ver">1.0</span><span class="state">Designed</span></div>
@@ -206,14 +196,15 @@
     </section>
 
     <section class="about" id="about" aria-labelledby="about-title">
-      <figure class="about-photo">
+      <figure class="about-photo" data-reveal>
         <img src="assets/img/preflight.jpg" width="800" height="960" alt="Mohamed-Essadak Rakah doing a preflight check on AWRAS 1.2 at a picnic table in the field" loading="lazy" decoding="async">
         <figcaption>Preflight on AWRAS 1.2, before the catapult flight.</figcaption>
       </figure>
-      <div class="about-copy">
+      <div class="about-copy" data-reveal>
         <h2 id="about-title">About</h2>
-        <p>I learn how a system works, then build my own version. That usually means CAD in Onshape, then whatever process gets the part made, whether that's FDM printing, carbon fiber layup, the CNC router or the manual mill, and then the wiring and flight-controller setup that makes it run.</p>
-        <p>I grew up across several countries and finished high school in Doha, where I founded OBK Robotics. Now I'm at UMass Amherst, building airframe structures for our Design/Build/Fly aircraft.</p>
+        <p>Robotics and AI are what I enjoy most, and they're where I want to work: machines that can sense what's around them, decide what to do, and move on their own. That's the direction my next projects are heading.</p>
+        <p>I learn how a system works, then build my own version. That usually means CAD in Onshape, then whatever process gets the part made, whether that's FDM printing, carbon fiber layup, the CNC router or the manual mill, and then the wiring and electronics that make it run.</p>
+        <p>I grew up across several countries and finished high school in Doha, where I founded OBK Robotics. Now I'm studying mechanical engineering at UMass Amherst and building airframe structures for our Design/Build/Fly team.</p>
 
         <h3>What I'm working on now</h3>
         <ul class="now">
@@ -234,10 +225,10 @@
     </section>
 
     <section class="contact" id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Have something that needs to fly, think, or move?</h2>
+      <h2 id="contact-title" data-reveal>Have something that needs to fly, think, or move?</h2>
       <p>I'm looking for internships and research positions. Email reaches me fastest.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:mrakah@umass.edu">mrakah@umass.edu</a>
+        <a class="btn btn-primary" href="mailto:mohamedessadakrakah@gmail.com">mohamedessadakrakah@gmail.com</a>
         <a class="btn btn-quiet" href="https://www.linkedin.com/in/mohamed-essadak-rakah" target="_blank" rel="noreferrer">LinkedIn</a>
         <a class="btn btn-quiet" href="https://github.com/morakah-hub" target="_blank" rel="noreferrer">GitHub</a>
       </div>

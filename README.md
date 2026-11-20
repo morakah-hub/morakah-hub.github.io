@@ -8,12 +8,16 @@ Plain HTML, CSS and JavaScript with no build step. GitHub Pages serves the `main
 | --- | --- |
 | `index.html` | All page content: projects, AWRAS build log, about, contact |
 | `styles.css` | Layout, colors and type |
-| `main.js` | Hero airflow animation, project rail buttons |
+| `main.js` | Hero robot-arm animation, scroll effects, project rail buttons |
 | `assets/img/` | Project photos, resized from each project's repo |
 
 ## The hero animation
 
-The streamlines are potential flow past a Joukowski airfoil at a 6° angle of attack (the angle where my MH60 XFOIL study found peak L/D for AWRAS). A circle is mapped to an airfoil with z = ζ + 1/ζ, the circulation is set by the Kutta condition, and particles are moved through the exact velocity field. Brighter lines are faster flow, so the suction side over the top of the wing stands out. With reduced motion turned on, it draws still streamlines instead.
+Two robot arms on a loop: arm A picks a little robot's base, body and head from the tray and stacks them, and arm B screws each part down. When the robot is complete, its eyes light up, it drives off, new parts drop into the tray, and the cycle starts again. The arms are moved with two-link inverse kinematics along eased paths. With reduced motion turned on, it shows one still frame instead.
+
+## Scroll effects
+
+A progress line under the nav, the hero text and scene drifting as you scroll away, and sections that rise in as they reach the screen, with photos wiping in from the top.
 
 ## Updating
 

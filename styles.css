@@ -62,6 +62,11 @@ p { margin: 0; }
   transition: border-color .2s;
 }
 .nav.is-scrolled { border-bottom-color: var(--rule); }
+.progress {
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: var(--flow); transform-origin: 0 50%;
+  transform: scaleX(var(--sp, 0));
+}
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 20px; }
 .brand-mark { width: 26px; height: 26px; fill: var(--flow); }
 .nav nav { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 30px); }
@@ -78,14 +83,21 @@ p { margin: 0; }
   padding: 72px var(--gutter) 96px;
   overflow: hidden;
   isolation: isolate;
+  background-image: radial-gradient(rgba(141, 154, 176, 0.16) 1px, transparent 1.5px);
+  background-size: 28px 28px;
+  background-position: 0 calc(var(--hp, 0) * 90px);
 }
-#flow { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+#scene {
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1;
+  transform: translateY(calc(var(--hp, 0) * 70px));
+  opacity: calc(1 - var(--hp, 0) * 0.85);
+}
 /* keeps the headline readable over the streamlines */
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: linear-gradient(90deg, rgba(11, 20, 36, .92) 0%, rgba(11, 20, 36, .7) 34%, rgba(11, 20, 36, 0) 62%);
 }
-.hero-copy { max-width: 620px; }
+.hero-copy { max-width: 620px; transform: translateY(calc(var(--hp, 0) * -50px)); opacity: calc(1 - var(--hp, 0) * 0.9); }
 .hero h1 {
   font-size: clamp(46px, 7.4vw, 104px);
   line-height: 0.95;
@@ -95,11 +107,6 @@ p { margin: 0; }
 .lede { margin-top: 28px; max-width: 34em; color: #c3ccda; font-size: clamp(17px, 1.4vw, 19px); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .open { margin-top: 26px; color: var(--haze); font-size: 15px; }
-.flow-note {
-  position: absolute; right: var(--gutter); bottom: 28px;
-  max-width: 30ch; text-align: right;
-  color: var(--haze); font-size: 13px; line-height: 1.45;
-}
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -195,7 +202,7 @@ p { margin: 0; }
 
 /* Build log */
 .specs {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
   margin: 40px 0 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
 }
 .specs div { padding: 18px 20px 18px 0; }
@@ -266,9 +273,8 @@ p { margin: 0; }
 @media (max-width: 720px) {
   body { font-size: 16px; }
   .nav nav a:not(.nav-cta) { display: none; }
-  .hero { min-height: auto; padding-top: 56px; padding-bottom: 190px; align-items: flex-start; }
+  .hero { min-height: auto; padding-top: 56px; padding-bottom: 260px; align-items: flex-start; }
   .hero::after { background: linear-gradient(180deg, rgba(11, 20, 36, .9) 0%, rgba(11, 20, 36, .75) 55%, rgba(11, 20, 36, 0) 78%); }
-  .flow-note { left: var(--gutter); right: var(--gutter); max-width: none; text-align: left; bottom: 22px; }
   .where { grid-template-columns: 1fr; gap: 12px; }
   .where ul { grid-template-columns: 1fr; gap: 14px; }
   .rail { grid-auto-columns: 84%; }
@@ -278,7 +284,26 @@ p { margin: 0; }
   .footer { flex-direction: column; }
 }
 
+/* Scroll reveals: content rises in as it enters the screen, and photos wipe in top to bottom.
+   Only active when JavaScript runs, so the page is never left blank. */
+.js [data-reveal] {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .7s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+.js [data-reveal] .frame, .js .timeline > [data-reveal] img, .js .about-photo[data-reveal] img {
+  clip-path: inset(0 0 100% 0 round var(--radius-m));
+  transition: clip-path 1s cubic-bezier(.65, 0, .35, 1) calc(var(--i, 0) * 90ms + 120ms);
+}
+.js [data-reveal].is-in .frame, .js .timeline > [data-reveal].is-in img, .js .about-photo[data-reveal].is-in img {
+  clip-path: inset(0 0 0 0 round var(--radius-m));
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .js [data-reveal] .frame, .js .timeline > [data-reveal] img, .js .about-photo[data-reveal] img { clip-path: none; transition: none; }
+  .hero-copy, #scene { transform: none; opacity: 1; }
   html { scroll-behavior: auto; }
   .frame img { transition: none; }
   .frame:hover img { transform: none; }
