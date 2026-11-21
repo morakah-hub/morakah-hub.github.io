@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&f[]=switzer@400,500,600&display=swap">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -41,8 +41,9 @@
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
+      <canvas id="land" aria-hidden="true"></canvas>
       <canvas id="flow" aria-hidden="true"></canvas>
-      <canvas id="rig" aria-hidden="true"></canvas>
+      <canvas id="wing" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <h1 id="hero-title">I build things that fly, think, and move.</h1>
         <p class="lede">Second-year mechanical engineering student at UMass Amherst, most interested in robotics and AI. I also build airframe structures for the UMass Aeronautics Design/Build/Fly team.</p>
@@ -53,6 +54,8 @@
         <p class="open">Open to internships and research positions in robotics, AI, and mechanical engineering.</p>
       </div>
     </section>
+
+    <div class="dig" aria-hidden="true"><canvas id="dig"></canvas></div>
 
     <section class="where" aria-label="Where I build">
       <p>Where I build</p>
@@ -138,16 +141,8 @@
         </article>
 
         <article class="project" data-reveal>
-          <a class="frame frame-art" href="https://github.com/morakah-hub/Drone-Projects" target="_blank" rel="noreferrer" aria-label="Open the drone projects repo">
-            <svg viewBox="0 0 480 300" role="img" aria-label="Top-down outline of an X-frame quadcopter">
-              <g class="art">
-                <path d="M170 80 L310 220 M310 80 L170 220"/>
-                <rect x="215" y="125" width="50" height="50" rx="8"/>
-                <circle cx="170" cy="80" r="44"/><circle cx="310" cy="80" r="44"/>
-                <circle cx="170" cy="220" r="44"/><circle cx="310" cy="220" r="44"/>
-              </g>
-              <g class="art-done"><circle cx="240" cy="150" r="6"/></g>
-            </svg>
+          <a class="frame" href="https://github.com/morakah-hub/Drone-Projects" target="_blank" rel="noreferrer" aria-label="Open the drone projects repo">
+            <img src="assets/img/drones.jpg" width="960" height="600" alt="Two FPV quadcopters, a transmitter and FPV goggles in front of a foamboard RC plane, with a third quad propped against the wall" loading="lazy" decoding="async">
           </a>
           <div class="project-top"><h3>Drones</h3><span class="tag">3 quads</span></div>
           <p class="blurb">A 5″ competition quad, a 7″ freestyle quad whose motors went into my flying wing after it crashed, and a high-speed build. This is where I learned to solder, set up Betaflight, and fly FPV.</p>
@@ -242,6 +237,6 @@
     <a href="#top">Back to top</a>
   </footer>
 
-  <script src="main.js?v=5" defer></script>
+  <script src="main.js?v=6" defer></script>
 </body>
 </html>
