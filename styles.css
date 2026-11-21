@@ -128,7 +128,7 @@ body::before {
 .btn-quiet:hover { border-color: var(--flow); }
 
 /* Underground: pixel-art blocks between the landscape and space */
-.dig { position: relative; height: clamp(560px, 115vh, 1150px); overflow: hidden; }
+.dig { position: relative; height: clamp(780px, 115vh, 1150px); overflow: hidden; }
 #dig { position: absolute; left: 0; top: 0; image-rendering: pixelated; }
 
 /* Where I build */
@@ -289,7 +289,7 @@ body::before {
   .nav nav a:not(.nav-cta) { display: none; }
   .hero { min-height: auto; padding-top: 48px; padding-bottom: 470px; }
   .hero::after { background: linear-gradient(180deg, rgba(11, 20, 36, .7) 0%, rgba(11, 20, 36, .45) 40%, rgba(11, 20, 36, 0) 55%); }
-  .dig { height: clamp(520px, 95vh, 900px); }
+  .dig { height: clamp(640px, 95vh, 900px); }
   .where { grid-template-columns: 1fr; gap: 12px; }
   .where ul { grid-template-columns: 1fr; gap: 14px; }
   .rail { grid-auto-columns: 84%; }

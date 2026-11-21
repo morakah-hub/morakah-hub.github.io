@@ -65,7 +65,7 @@ const PX = (() => {
 /* Space, behind everything below the underground section. Scrolling flies the camera
    forward or back through stars, galaxies, planets and nebulas; it also drifts on its own.
    Stars are mostly white, blue, purple and pink, with rare red, yellow and orange. */
-(() => {
+(() => { try {
   const canvas = document.getElementById("space");
   if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext("2d");
@@ -328,13 +328,13 @@ const PX = (() => {
   document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
   let rt = 0;
   window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(layout, 150); });
-})();
+} catch (err) { console.error("Scene failed to load:", err); } })();
 /* Hero: a pixel-art landscape at dusk, seen from a moving train. Each layer scrolls at its
    own speed, and everything in it (trees, bushes, flowers, grass, rocks, clouds, mountain
    ridges) is generated as it comes into view, with random shapes, sizes, colors and spacing,
    so the scene never repeats. A robot runs along the path, and the wing sits in the airflow
    above the clouds. */
-(() => {
+(() => { try {
   const hero = document.querySelector(".hero");
   const land = document.getElementById("land");
   const flowCanvas = document.getElementById("flow");
@@ -563,9 +563,12 @@ const PX = (() => {
   let layers = null, skyStars = [], dust = [], cam = 0, phase = 0, lastStep = 0, shoot = null;
   const SPEED = 24;          // ground speed, buffer px per second
 
+  let ready = false;
   function build() {
     const r = hero.getBoundingClientRect();
     W = r.width; H = r.height;
+    ready = false;
+    if (W < 16 || H < 16) return false;
     P = W >= 900 ? 4 : 3;
     BW = Math.ceil(W / P); BH = Math.ceil(H / P);
     land.width = BW; land.height = BH;
@@ -924,6 +927,7 @@ const PX = (() => {
   // ---- loop ----
   let running = false, visible = true, last = 0, raf = 0, clock = 0;
   function frame(dtMs) {
+    if (!ready) return;
     const dt = dtMs / 1000;
     clock += dt;
     setAlpha(alphaAt(clock));
@@ -943,7 +947,9 @@ const PX = (() => {
   function stop() { running = false; cancelAnimationFrame(raf); }
 
   function init() {
-    build(); buildWing();
+    if (build() === false) return;
+    ready = true;
+    buildWing();
     cam = 0; phase = 0; dust = [];
     setAlpha(alphaAt(0));
     render(0, 0);
@@ -976,13 +982,20 @@ const PX = (() => {
     new IntersectionObserver((e) => { visible = e[0].isIntersecting; visible ? start() : stop(); }).observe(hero);
   }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { stop(); init(); });
+  // rebuild if the hero gets its real width later (for example a tab hidden while loading)
+  if ("ResizeObserver" in window) {
+    new ResizeObserver((entries) => {
+      const w = entries[0].contentRect.width;
+      if (!ready && w >= 16) { lastW = w; stop(); init(); }
+    }).observe(hero);
+  }
   init();
-})();
+} catch (err) { console.error("Scene failed to load:", err); } })();
 /* Underground: a cut-away below the landscape, made of blocks. Dirt gives way to stone and
    then deepslate, with ores that get rarer and shinier with depth (coal, iron, gold, lapis,
    redstone, diamond, the odd emerald), fossils, a lava pocket, torches, and the pixel robot
    arm drilling ore in a cave. The bottom crumbles away into space. */
-(() => {
+(() => { try {
   const sec = document.querySelector(".dig");
   const canvas = document.getElementById("dig");
   if (!sec || !canvas || !canvas.getContext) return;
@@ -1039,14 +1052,14 @@ const PX = (() => {
       });
       return PAL[T.CAVE][near ? 0 : hash(gx >> 1, gy >> 1, 3) < 0.5 ? 1 : 2];
     }
-    const pal = PAL[cell.t];
+    const pal = PAL[cell.t] || PAL[T.STONE];
     let hv = hash(gx >> 1, gy >> 1, cell.t) * 0.6 + hash(gx, gy, cell.t + 9) * 0.4;
     if (cell.t === T.DEEP && gy % 3 === 0) hv -= 0.2;
     let i = hv < 0.18 ? 0 : hv < 0.48 ? 1 : hv < 0.85 ? 2 : 3;
     if (cell.t === T.GRAVEL) i = Math.floor(hash(gx >> 1, gy >> 1, 21) * 4);
     if (lx === B - 1 || ly === B - 1) i = Math.max(0, i - 1);   // soft block edges
     let col = pal[i];
-    if (cell.ore) {
+    if (cell.ore && ORES[cell.ore]) {
       const o = ORES[cell.ore];
       for (let k = 0; k < 4; k++) {
         const cx = 1 + Math.floor(hash(cell.c, cell.r * 7 + k, 40 + cell.seed) * 5), cy = 1 + Math.floor(hash(cell.r, cell.c * 7 + k, 41 + cell.seed) * 5);
@@ -1063,9 +1076,12 @@ const PX = (() => {
     }
   }
 
+  let ready = false;
   function build() {
     const r = sec.getBoundingClientRect();
     W = r.width; H = r.height;
+    ready = false;
+    if (W < 16 || H < 16) return;
     P = W >= 900 ? 4 : 3;
     BW = Math.ceil(W / P); BH = Math.ceil(H / P);
     canvas.width = BW; canvas.height = BH;
@@ -1108,7 +1124,7 @@ const PX = (() => {
     for (let c = Math.round(mc - mw); c <= Math.round(mc + mw); c++) { const cell = cellAt(c, mr + 2); if (cell) { cell.t = T.CAVE; cell.ore = null; } }
     let tx = cols * (wide ? 0.18 : 0.15), ty = rows * 0.28;
     for (let k = 0; k < 14; k++) { carve(tx, ty, 1.4, 1); tx += 0.9 + rand() * 0.6; ty += (rand() - 0.5) * 1.2; }
-    const lc = Math.round(cols * (wide ? 0.32 : 0.7)), lr = Math.round(rows * 0.76);
+    const lc = Math.round(cols * (wide ? 0.32 : 0.7)), lr = Math.max(mr + 1, Math.min(Math.round(rows * 0.76), rows - 11));
     carve(lc, lr, 3.2, 1.4);
     for (let c = lc - 3; c <= lc + 3; c++) { const cell = cellAt(c, lr + 1); if (cell && cell.t === T.CAVE) cell.t = T.LAVA; }
 
@@ -1124,7 +1140,7 @@ const PX = (() => {
     lavaPx = []; shinyPx = []; floaters = [];
     for (const cell of cells) {
       if (cell.t === T.AIR) continue;
-      if (cell.float && cell.t !== T.CAVE) { floaters.push({ cell, ph: rand() * 6.28, amp: 1 + rand() * 1.5 }); continue; }
+      if (cell.float && solid(cell)) { floaters.push({ cell, ph: rand() * 6.28, amp: 1 + rand() * 1.5 }); continue; }
       for (let y = 0; y < B; y++) for (let x = 0; x < B; x++) {
         const gx = cell.c * B + x, gy = cell.r * B + y;
         if (gx >= BW || gy >= BH) continue;
@@ -1161,6 +1177,7 @@ const PX = (() => {
 
     // mining arm setup (buffer px)
     const floorY = floorRow * B, faceX = wallC * B, faceY = (floorRow - 1) * B + 4;
+    ready = true;
     mine = {
       target, floorY, faceX, faceY, drill: 6,
       base: [faceX - 30, floorY - 6], rest: [faceX - 26, floorY - 24],
@@ -1260,6 +1277,7 @@ const PX = (() => {
   const CYCLE = 6.5;
   let lastCycle = -1;
   function render(t, dt) {
+    if (!ready) return;
     buf.set(stat);
     // lava
     for (let i = 0; i < lavaPx.length; i += 2) {
@@ -1375,6 +1393,18 @@ const PX = (() => {
   function start() { if (running || reduceMotion || !visible || document.hidden) return; running = true; last = 0; raf = requestAnimationFrame(loop); }
   function stop() { running = false; cancelAnimationFrame(raf); }
   function init() { build(); render(2.2, 0); }
+  // rebuild when the section's width changes, including from zero (for example a tab that
+  // was hidden while the page loaded)
+  if ("ResizeObserver" in window) {
+    let rw = 0;
+    new ResizeObserver((entries) => {
+      const w = entries[0].contentRect.width;
+      if (Math.abs(w - rw) < 2) return;
+      const first = rw === 0;
+      rw = w;
+      if (!first || !ready) { lastW = w; stop(); init(); start(); }
+    }).observe(sec);
+  }
 
   let rt = 0, lastW = sec.getBoundingClientRect().width;
   window.addEventListener("resize", () => {
@@ -1391,7 +1421,7 @@ const PX = (() => {
   } else { visible = true; }
   init();
   start();
-})();
+} catch (err) { console.error("Scene failed to load:", err); } })();
 /* Scroll effects: progress line under the nav, hero drift, and reveals */
 (() => {
   const root = document.documentElement;
